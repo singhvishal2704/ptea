@@ -35,20 +35,67 @@
         box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
       }
       .section-bg-top {
-        background: linear-gradient(to bottom, #f3ede0 0%, #faf5eb 40%, #ffffff 100%);
+        background: linear-gradient(
+          to bottom,
+          #f3ede0 0%,
+          #faf5eb 40%,
+          #ffffff 100%
+        );
       }
       .section-bg-cream {
         background-color: #faf5eb;
       }
+
       @keyframes ticker {
-  0%   { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+      .animate-ticker {
+        animation: ticker 30s linear infinite;
+      }
 
-.animate-ticker {
-  animation: ticker 30s linear infinite;
-}
+      /* ===== HERO LANDING ANIMATION ===== */
+      @keyframes heroFadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .hero-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: heroFadeUp 1s ease-out forwards;
+        animation-delay: 0.2s;
+      }
 
+      /* ===== SCROLL REVEAL SECTIONS ===== */
+      .section-reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+      .section-reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      html {
+        font-size: 17px; /* ~6% bigger than default 16px */
+      }
+
+      @media (min-width: 1024px) {
+        html {
+          font-size: 18px; /* slightly bigger on desktop */
+        }
+      }
     </style>
   </head>
   <body class="font-sans text-slate-900 bg-white">
@@ -91,10 +138,14 @@
         </nav>
 
         <div class="hidden items-center gap-4 text-xs text-white lg:flex">
-          <button class="rounded-full border border-white/50 px-4 py-1 hover:bg-white/10">
+          <button
+            class="rounded-full border border-white/50 px-4 py-1 hover:bg-white/10"
+          >
             Sign In
           </button>
-          <button class="rounded-full bg-teaGold px-4 py-1 font-semibold text-teaDark">
+          <button
+            class="rounded-full bg-teaGold px-4 py-1 font-semibold text-teaDark"
+          >
             Cart (0)
           </button>
         </div>
@@ -123,10 +174,14 @@
           alt="Prabha Tea Gardens"
           class="absolute inset-0 h-full w-full object-cover brightness-50"
         />
-        <div class="absolute inset-0 bg-gradient-to-b from-emerald-950/70 via-emerald-900/10 to-teaCream/90"></div>
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-emerald-950/70 via-emerald-900/10 to-teaCream/90"
+        ></div>
 
-        <!-- Hero content -->
-        <div class="relative z-10 mx-auto flex max-w-6xl flex-col px-4 pb-16 text-center">
+        <!-- Hero content with landing animation -->
+        <div
+          class="hero-animate relative z-10 mx-auto flex max-w-6xl flex-col px-4 pb-16 text-center"
+        >
           <p class="text-xs uppercase tracking-[0.4em] text-white">
             Single-Origin Indian Teas
           </p>
@@ -137,8 +192,8 @@
             Fresh from Our Gardens to Your Cup
           </h1>
           <p class="mx-auto mt-4 max-w-2xl text-sm text-white md:text-base">
-            At Prabha Tea we bring you handpicked leaves from the misty hills of India, packed
-            at source to lock in freshness, aroma and flavour.
+            At Prabha Tea we bring you handpicked leaves from the misty hills of
+            India, packed at source to lock in freshness, aroma and flavour.
           </p>
 
           <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
@@ -164,28 +219,34 @@
             <div>Crafted With Indian Tea Masters</div>
           </div>
         </div>
-        
 
-
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden bg-[#AB8742] text-white/70 backdrop-blur-sm">
-    <div class="relative whitespace-nowrap flex gap-8 animate-ticker py-3">
-      <span class="text-lg font-medium">🌱 Fresh Premium Tea Leaves Now Available</span>
-      <span class="text-lg font-medium">📦 Free Shipping on Orders Above ₹999</span>
-      <span class="text-lg font-medium">🫖 Discover Our New Winter Special Masala Tea</span>
-      <span class="text-lg font-medium">🎁 Gift Boxes Launching Soon</span>
-    </div>
-
-    <!-- Optional left/right fade edges -->
-    <!-- <div class="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-yellow-800 to-transparent"></div>
-    <div class="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-black to-transparent"></div> -->
-  </div>
-
-
+        <div
+          class="absolute bottom-0 left-0 w-full overflow-hidden bg-[#AB8742] text-white/70 backdrop-blur-sm"
+        >
+          <div
+            class="relative whitespace-nowrap flex gap-8 animate-ticker py-3"
+          >
+            <span class="text-lg font-medium"
+              >🌱 Fresh Premium Tea Leaves Now Available</span
+            >
+            <span class="text-lg font-medium"
+              >📦 Free Shipping on Orders Above ₹999</span
+            >
+            <span class="text-lg font-medium"
+              >🫖 Discover Our New Winter Special Masala Tea</span
+            >
+            <span class="text-lg font-medium"
+              >🎁 Gift Boxes Launching Soon</span
+            >
+          </div>
+        </div>
       </section>
     </header>
 
     <!-- Stripe with logos / press -->
-    <section class="border-b border-emerald-900/10 bg-teaDark/95 py-3 text-[10px] text-teaGreen">
+    <section
+      class="border-b border-emerald-900/10 bg-teaDark/95 py-3 text-[10px] text-teaGreen"
+    >
       <div
         class="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-4 px-4 text-center uppercase tracking-[0.3em]"
       >
@@ -198,13 +259,17 @@
 
     <!-- ========== SHOP BY CATEGORY ========== -->
     <main>
-      <section id="categories" class="section-bg-cream py-16">
+      <section id="categories" class="section-reveal section-bg-cream py-16">
         <div class="mx-auto max-w-6xl px-4">
           <div class="text-center">
-            <p class="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
+            <p
+              class="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70"
+            >
               Something for everyone
             </p>
-            <h2 class="mt-2 font-display text-2xl text-emerald-950">Shop by Category</h2>
+            <h2 class="mt-2 font-display text-2xl text-emerald-950">
+              Shop by Category
+            </h2>
           </div>
 
           <div class="mt-10 grid gap-6 sm:grid-cols-3">
@@ -213,15 +278,18 @@
               class="rounded-xl bg-white p-4 text-center shadow-soft transition hover:-translate-y-1"
             >
               <img
-                src="/images/category-gift-boxes.jpg"
+                src="./assets/images/tea-gitbox.avif"
                 alt="Gift boxes"
-                class="mx-auto h-32 w-full max-w-[220px] rounded-lg object-cover"
+                class="mx-auto h-60 w-full rounded-lg object-cover"
               />
-              <h3 class="mt-4 text-sm font-semibold tracking-wide text-emerald-950">
+              <h3
+                class="mt-4 text-sm font-semibold tracking-wide text-emerald-950"
+              >
                 Gift Boxes
               </h3>
               <p class="mt-2 text-xs text-slate-600">
-                Curated assortments to celebrate every occasion with warmth and flavour.
+                Curated assortments to celebrate every occasion with warmth and
+                flavour.
               </p>
             </article>
 
@@ -229,15 +297,18 @@
               class="rounded-xl bg-white p-4 text-center shadow-soft transition hover:-translate-y-1"
             >
               <img
-                src="/images/category-classic-teas.jpg"
+                src="./assets/images/loose-tea.avif"
                 alt="Loose leaf teas"
-                class="mx-auto h-32 w-full max-w-[220px] rounded-lg object-cover"
+                class="mx-auto h-60 w-full rounded-lg object-cover"
               />
-              <h3 class="mt-4 text-sm font-semibold tracking-wide text-emerald-950">
+              <h3
+                class="mt-4 text-sm font-semibold tracking-wide text-emerald-950"
+              >
                 Loose Leaf Teas
               </h3>
               <p class="mt-2 text-xs text-slate-600">
-                Signature single-origin blends from Darjeeling, Assam and Nilgiris.
+                Signature single-origin blends from Darjeeling, Assam and
+                Nilgiris.
               </p>
             </article>
 
@@ -245,11 +316,13 @@
               class="rounded-xl bg-white p-4 text-center shadow-soft transition hover:-translate-y-1"
             >
               <img
-                src="/images/category-samplers.jpg"
+                src="./assets/images/tea-sample.avif"
                 alt="Tea samplers"
-                class="mx-auto h-32 w-full max-w-[220px] rounded-lg object-cover"
+                class="mx-auto h-60 w-full rounded-lg object-cover"
               />
-              <h3 class="mt-4 text-sm font-semibold tracking-wide text-emerald-950">
+              <h3
+                class="mt-4 text-sm font-semibold tracking-wide text-emerald-950"
+              >
                 Sampler Packs
               </h3>
               <p class="mt-2 text-xs text-slate-600">
@@ -261,22 +334,30 @@
       </section>
 
       <!-- ========== SHOP BY PRODUCT (BEST SELLERS) ========== -->
-      <section id="products" class="bg-white py-16">
-        <div class="mx-auto max-w-6xl px-4">
-          <div class="flex flex-col items-center justify-between gap-4 text-center sm:flex-row">
+      <section id="products" class="section-reveal bg-white py-16">
+        <div class="mx-auto max-w-6xl px-4 h-[100vh]">
+          <div
+            class="flex flex-col items-center justify-between gap-4 text-center sm:flex-row"
+          >
             <div>
-              <p class="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
+              <p
+                class="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70"
+              >
                 Discover your favourite
               </p>
-              <h2 class="mt-2 font-display text-2xl text-emerald-950">Shop by Product</h2>
+              <h2 class="mt-2 font-display text-2xl text-emerald-950">
+                Shop by Product
+              </h2>
             </div>
             <div class="flex gap-3 text-xs">
               <button
-                class="rounded-full bg-emerald-900 px-4 py-1 font-semibold text-teaGreen shadow-soft"
+                class="rounded-full bg-emerald-900 px-4 py-1 font-semibold text-white shadow-soft"
               >
                 Best Sellers
               </button>
-              <button class="rounded-full border border-emerald-900/40 px-4 py-1 text-emerald-900">
+              <button
+                class="rounded-full border border-emerald-900/40 px-4 py-1 text-emerald-900"
+              >
                 New Arrivals
               </button>
             </div>
@@ -284,11 +365,13 @@
 
           <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <!-- Product card -->
-            <article class="flex flex-col rounded-xl border border-slate-200 bg-white p-3">
+            <article
+              class="flex flex-col rounded-xl border border-slate-200 bg-white p-3"
+            >
               <img
-                src="/images/product-turmeric-herbal.jpg"
+                src="./assets/images/Turmeric_Ashwagandha1.webp"
                 alt="Turmeric Herbal Infusion"
-                class="h-40 w-full rounded-lg object-cover"
+                class="h-60 w-full rounded-lg object-cover"
               />
               <div class="mt-3 flex-1 text-xs">
                 <p class="text-emerald-900/80">Herbal Infusion</p>
@@ -301,17 +384,19 @@
                 <p class="mt-3 text-sm font-semibold text-emerald-950">₹349</p>
               </div>
               <button
-                class="mt-3 rounded-full bg-emerald-900 py-2 text-xs font-semibold text-teaGreen hover:bg-emerald-800"
+                class="mt-3 rounded-full bg-emerald-900 py-2 text-xs font-semibold text-white hover:bg-emerald-800"
               >
                 Add to Cart
               </button>
             </article>
 
-            <article class="flex flex-col rounded-xl border border-slate-200 bg-white p-3">
+            <article
+              class="flex flex-col rounded-xl border border-slate-200 bg-white p-3"
+            >
               <img
-                src="/images/product-classic-assam.jpg"
+                src="./assets/images/Turmeric_Ashwagandha1.webp"
                 alt="Classic Assam Tea"
-                class="h-40 w-full rounded-lg object-cover"
+                class="h-60 w-full rounded-lg object-cover"
               />
               <div class="mt-3 flex-1 text-xs">
                 <p class="text-emerald-900/80">Black Tea</p>
@@ -324,17 +409,19 @@
                 <p class="mt-3 text-sm font-semibold text-emerald-950">₹299</p>
               </div>
               <button
-                class="mt-3 rounded-full bg-emerald-900 py-2 text-xs font-semibold text-teaGreen hover:bg-emerald-800"
+                class="mt-3 rounded-full bg-emerald-900 py-2 text-xs font-semibold text-white hover:bg-emerald-800"
               >
                 Add to Cart
               </button>
             </article>
 
-            <article class="flex flex-col rounded-xl border border-slate-200 bg-white p-3">
+            <article
+              class="flex flex-col rounded-xl border border-slate-200 bg-white p-3"
+            >
               <img
-                src="/images/product-masala-chai.jpg"
+                src="./assets/images/Turmeric_Ashwagandha1.webp"
                 alt="Masala Chai"
-                class="h-40 w-full rounded-lg object-cover"
+                class="h-60 w-full rounded-lg object-cover"
               />
               <div class="mt-3 flex-1 text-xs">
                 <p class="text-emerald-900/80">Masala Chai</p>
@@ -347,17 +434,19 @@
                 <p class="mt-3 text-sm font-semibold text-emerald-950">₹329</p>
               </div>
               <button
-                class="mt-3 rounded-full bg-emerald-900 py-2 text-xs font-semibold text-teaGreen hover:bg-emerald-800"
+                class="mt-3 rounded-full bg-emerald-900 py-2 text-xs font-semibold text-white hover:bg-emerald-800"
               >
                 Add to Cart
               </button>
             </article>
 
-            <article class="flex flex-col rounded-xl border border-slate-200 bg-white p-3">
+            <article
+              class="flex flex-col rounded-xl border border-slate-200 bg-white p-3"
+            >
               <img
-                src="/images/product-green-tea.jpg"
+                src="./assets/images/Turmeric_Ashwagandha1.webp"
                 alt="Green tea"
-                class="h-40 w-full rounded-lg object-cover"
+                class="h-60 w-full rounded-lg object-cover"
               />
               <div class="mt-3 flex-1 text-xs">
                 <p class="text-emerald-900/80">Green Tea</p>
@@ -370,7 +459,7 @@
                 <p class="mt-3 text-sm font-semibold text-emerald-950">₹359</p>
               </div>
               <button
-                class="mt-3 rounded-full bg-emerald-900 py-2 text-xs font-semibold text-teaGreen hover:bg-emerald-800"
+                class="mt-3 rounded-full bg-emerald-900 py-2 text-xs font-semibold text-white hover:bg-emerald-800"
               >
                 Add to Cart
               </button>
@@ -390,92 +479,120 @@
       </section>
 
       <!-- ========== TESTIMONIALS & CELEBRITY STRIP ========== -->
-      <section class="section-bg-cream py-16">
-        <div class="mx-auto max-w-6xl px-4">
+      <section class="section-reveal section-bg-cream py-16">
+        <div class="mx-auto max-w-6xl px-4 h-[80vh]">
           <div class="text-center">
-            <p class="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
+            <p
+              class="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70"
+            >
               Loved by tea lovers
             </p>
-            <h2 class="mt-2 font-display text-2xl text-emerald-950">Trusted by Thousands</h2>
+            <h2 class="mt-2 font-display text-2xl text-emerald-950">
+              Trusted by Thousands
+            </h2>
           </div>
 
           <div class="mt-10 grid gap-8 sm:grid-cols-3">
             <article class="text-center text-xs">
               <img
-                src="/images/testimonial-1.jpg"
+                src="./assets/images/user2.avif"
                 alt="Customer 1"
-                class="mx-auto h-24 w-24 rounded-full object-cover"
+                class="mx-auto h-60 w-60 rounded-full object-cover"
               />
-              <p class="mt-4 text-[11px] uppercase tracking-[0.2em] text-emerald-900/70">
+              <p
+                class="mt-4 text-sm uppercase tracking-[0.2em] text-emerald-900/70"
+              >
                 AROMA I CAN’T FORGET
               </p>
-              <p class="mt-2 text-[13px] text-slate-700">
-                “Prabha Tea has become my daily ritual. The freshness is unlike anything I’ve
-                tried before.”
+              <p class="mt-2 text-base text-slate-700">
+                “Prabha Tea has become my daily ritual. The freshness is unlike
+                anything I’ve tried before.”
               </p>
-              <p class="mt-3 text-[11px] font-semibold text-emerald-950">Ananya, Mumbai</p>
+              <p class="mt-3 text-sm font-semibold text-emerald-950">
+                Ananya, Mumbai
+              </p>
             </article>
 
             <article class="text-center text-xs">
               <img
-                src="/images/testimonial-2.jpg"
+                src="./assets/images/user1.avif"
                 alt="Customer 2"
-                class="mx-auto h-24 w-24 rounded-full object-cover"
+                class="mx-auto h-60 w-60 rounded-full object-cover"
               />
-              <p class="mt-4 text-[11px] uppercase tracking-[0.2em] text-emerald-900/70">
+              <p
+                class="mt-4 text-sm uppercase tracking-[0.2em] text-emerald-900/70"
+              >
                 GIFTING MADE EASY
               </p>
-              <p class="mt-2 text-[13px] text-slate-700">
-                “Beautiful packaging and incredible teas. My go-to gift for festivals now.”
+              <p class="mt-2 text-base text-slate-700">
+                “Beautiful packaging and incredible teas. My go-to gift for
+                festivals now.”
               </p>
-              <p class="mt-3 text-[11px] font-semibold text-emerald-950">Rahul, Bengaluru</p>
+              <p class="mt-3 text-sm font-semibold text-emerald-950">
+                Rahul, Bengaluru
+              </p>
             </article>
 
             <article class="text-center text-xs">
               <img
-                src="/images/testimonial-3.jpg"
+                src="./assets/images/user3.avif"
                 alt="Customer 3"
-                class="mx-auto h-24 w-24 rounded-full object-cover"
+                class="mx-auto h-60 w-60 rounded-full object-cover"
               />
-              <p class="mt-4 text-[11px] uppercase tracking-[0.2em] text-emerald-900/70">
+              <p
+                class="mt-4 text-sm uppercase tracking-[0.2em] text-emerald-900/70"
+              >
                 SUSTAINABLE &amp; HONEST
               </p>
-              <p class="mt-2 text-[13px] text-slate-700">
-                “I love that they work directly with farmers and share their stories.”
+              <p class="mt-2 text-base text-slate-700">
+                “I love that they work directly with farmers and share their
+                stories.”
               </p>
-              <p class="mt-3 text-[11px] font-semibold text-emerald-950">Meera, Delhi</p>
+              <p class="mt-3 text-sm font-semibold text-emerald-950">
+                Meera, Delhi
+              </p>
             </article>
           </div>
         </div>
       </section>
 
       <!-- ========== OUR STORY ========== -->
-      <section id="story" class="bg-white py-16">
-        <div class="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[1.1fr,1fr]">
+      <section id="story" class="section-reveal bg-white py-16">
+        <div
+          class="mx-auto grid max-w-6xl gap-10 px-4 md:grid-cols-[1.1fr,1fr]"
+        >
           <div>
-            <p class="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
+            <p
+              class="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70"
+            >
               A legacy in every cup
             </p>
-            <h2 class="mt-2 font-display text-2xl text-emerald-950">Our Story</h2>
+            <h2 class="mt-2 font-display text-2xl text-emerald-950">
+              Our Story
+            </h2>
             <p class="mt-4 text-sm leading-relaxed text-slate-700">
-              Prabha Tea began as a small family venture in the foothills of the Himalayas. What
-              started as a passion for sharing fresh, high-quality teas with friends and neighbours
-              soon grew into a commitment to bring the same experience to tea lovers across the
+              Prabha Tea began as a small family venture in the foothills of the
+              Himalayas. What started as a passion for sharing fresh,
+              high-quality teas with friends and neighbours soon grew into a
+              commitment to bring the same experience to tea lovers across the
               world.
             </p>
             <p class="mt-3 text-sm leading-relaxed text-slate-700">
-              We work closely with partner gardens and smallholder farmers who have been nurturing
-              tea bushes for generations. Our teas are vacuum packed within hours of harvest,
-              preserving the natural oils and aromas that make Indian tea truly special.
+              We work closely with partner gardens and smallholder farmers who
+              have been nurturing tea bushes for generations. Our teas are
+              vacuum packed within hours of harvest, preserving the natural oils
+              and aromas that make Indian tea truly special.
             </p>
             <p class="mt-3 text-sm leading-relaxed text-slate-700">
-              Every box of Prabha Tea you open carries this legacy — of land, people and patience —
-              from our hillsides to your home.
+              Every box of Prabha Tea you open carries this legacy — of land,
+              people and patience — from our hillsides to your home.
             </p>
 
             <div class="mt-6 flex items-center gap-4">
               <div>
-                <p class="text-sm font-semibold text-emerald-950">Rohan Prabha</p>
+                <p class="text-sm font-semibold text-emerald-950">
+                  Harsh Pandey
+                </p>
                 <p class="text-xs text-slate-600">Founder, Prabha Tea</p>
               </div>
             </div>
@@ -485,54 +602,71 @@
             class="flex flex-col items-center justify-center rounded-2xl bg-teaCream p-6 text-center shadow-soft"
           >
             <img
-              src="/images/founder.jpg"
+              src="./assets/images/founder.jpg"
               alt="Founder portrait"
-              class="mb-4 h-36 w-36 rounded-full object-cover"
+              class="mb-4 h-60 w-60 rounded-full object-cover"
             />
-            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-900/80">
+            <p
+              class="text-xs font-semibold uppercase tracking-[0.2em] text-emerald-900/80"
+            >
               From our hills to your home
             </p>
             <p class="mt-3 text-sm text-slate-700">
-              “We want every sip to feel like a quiet moment in the tea gardens — calm, grounded
-              and full of life.”
+              “We want every sip to feel like a quiet moment in the tea gardens
+              — calm, grounded and full of life.”
             </p>
           </div>
         </div>
       </section>
 
       <!-- ========== FARMERS & ENVIRONMENT ========== -->
-      <section id="farmers" class="section-bg-cream py-16">
+      <section id="farmers" class="section-reveal section-bg-cream py-16">
         <div class="mx-auto max-w-6xl px-4">
           <div class="grid gap-10 md:grid-cols-2">
             <div class="order-2 md:order-1">
-              <p class="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
+              <p
+                class="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70"
+              >
                 We care for
               </p>
               <h2 class="mt-2 font-display text-2xl text-emerald-950">
                 Our Farmers &amp; the Environment
               </h2>
               <p class="mt-4 text-sm leading-relaxed text-slate-700">
-                Better tea begins with better livelihoods. We believe that when farmers and their
-                families thrive, the tea in your cup tastes better too.
+                Better tea begins with better livelihoods. We believe that when
+                farmers and their families thrive, the tea in your cup tastes
+                better too.
               </p>
 
               <div class="mt-6 space-y-4 text-sm text-slate-700">
                 <div class="flex gap-3">
-                  <span class="mt-1 h-6 w-6 rounded-full bg-emerald-900/90 text-center text-xs text-teaGreen">1</span>
+                  <span
+                    class="mt-1 h-6 w-6 rounded-full bg-emerald-900/90 text-center text-xs text-white"
+                    >1</span
+                  >
                   <p>
-                    Direct trade partnerships that ensure fair and transparent prices for growers.
+                    Direct trade partnerships that ensure fair and transparent
+                    prices for growers.
                   </p>
                 </div>
                 <div class="flex gap-3">
-                  <span class="mt-1 h-6 w-6 rounded-full bg-emerald-900/90 text-center text-xs text-teaGreen">2</span>
+                  <span
+                    class="mt-1 h-6 w-6 rounded-full bg-emerald-900/90 text-center text-xs text-white"
+                    >2</span
+                  >
                   <p>
-                    Climate-resilient farming practices that protect soil health and biodiversity.
+                    Climate-resilient farming practices that protect soil health
+                    and biodiversity.
                   </p>
                 </div>
                 <div class="flex gap-3">
-                  <span class="mt-1 h-6 w-6 rounded-full bg-emerald-900/90 text-center text-xs text-teaGreen">3</span>
+                  <span
+                    class="mt-1 h-6 w-6 rounded-full bg-emerald-900/90 text-center text-xs text-white"
+                    >3</span
+                  >
                   <p>
-                    Investment in education and community programs around our partner estates.
+                    Investment in education and community programs around our
+                    partner estates.
                   </p>
                 </div>
               </div>
@@ -541,9 +675,9 @@
             <div class="order-1 md:order-2">
               <div class="overflow-hidden rounded-2xl shadow-soft">
                 <img
-                  src="/images/farmers.jpg"
+                  src="./assets/images/tea-farmer.avif"
                   alt="Tea farmers in the field"
-                  class="h-full w-full object-cover"
+                  class="h-[80vh] w-full object-cover"
                 />
               </div>
             </div>
@@ -552,10 +686,12 @@
       </section>
 
       <!-- ========== LOVED BY EVERYONE (LIFESTYLE CARDS) ========== -->
-      <section class="bg-white py-16">
+      <section class="section-reveal bg-white py-16">
         <div class="mx-auto max-w-6xl px-4">
           <div class="text-center">
-            <p class="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
+            <p
+              class="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70"
+            >
               Loved by everyone
             </p>
             <h2 class="mt-2 font-display text-2xl text-emerald-950">
@@ -564,45 +700,60 @@
           </div>
 
           <div class="mt-10 grid gap-6 md:grid-cols-3">
-            <article class="flex flex-col rounded-2xl bg-teaCream p-4 shadow-soft">
+            <article
+              class="flex flex-col rounded-2xl bg-teaCream p-4 shadow-soft"
+            >
               <img
                 src="/images/lifestyle-store.jpg"
                 alt="Tea boutique"
                 class="h-40 w-full rounded-xl object-cover"
               />
-              <p class="mt-4 text-[11px] uppercase tracking-[0.2em] text-emerald-900/80">
+              <p
+                class="mt-4 text-[11px] uppercase tracking-[0.2em] text-emerald-900/80"
+              >
                 TEA BOUTIQUES
               </p>
               <p class="mt-2 text-xs text-slate-700">
-                Discover Prabha Tea at select gourmet stores and boutique cafés across India.
+                Discover Prabha Tea at select gourmet stores and boutique cafés
+                across India.
               </p>
             </article>
 
-            <article class="flex flex-col rounded-2xl bg-teaCream p-4 shadow-soft">
+            <article
+              class="flex flex-col rounded-2xl bg-teaCream p-4 shadow-soft"
+            >
               <img
                 src="/images/lifestyle-home.jpg"
                 alt="People having tea at home"
                 class="h-40 w-full rounded-xl object-cover"
               />
-              <p class="mt-4 text-[11px] uppercase tracking-[0.2em] text-emerald-900/80">
+              <p
+                class="mt-4 text-[11px] uppercase tracking-[0.2em] text-emerald-900/80"
+              >
                 EVERYDAY RITUALS
               </p>
               <p class="mt-2 text-xs text-slate-700">
-                From lazy Sundays to busy weekdays, our teas are crafted for daily comfort.
+                From lazy Sundays to busy weekdays, our teas are crafted for
+                daily comfort.
               </p>
             </article>
 
-            <article class="flex flex-col rounded-2xl bg-teaCream p-4 shadow-soft">
+            <article
+              class="flex flex-col rounded-2xl bg-teaCream p-4 shadow-soft"
+            >
               <img
                 src="/images/lifestyle-gifting.jpg"
                 alt="Gift hampers"
                 class="h-40 w-full rounded-xl object-cover"
               />
-              <p class="mt-4 text-[11px] uppercase tracking-[0.2em] text-emerald-900/80">
+              <p
+                class="mt-4 text-[11px] uppercase tracking-[0.2em] text-emerald-900/80"
+              >
                 CELEBRATION GIFTING
               </p>
               <p class="mt-2 text-xs text-slate-700">
-                Elegant gift hampers for weddings, festivals and corporate events.
+                Elegant gift hampers for weddings, festivals and corporate
+                events.
               </p>
             </article>
           </div>
@@ -610,17 +761,23 @@
       </section>
 
       <!-- ========== PREMIUM GIFTS ========== -->
-      <section id="gifts" class="section-bg-cream py-16">
+      <section id="gifts" class="section-reveal section-bg-cream py-16">
         <div class="mx-auto max-w-6xl px-4">
           <div class="text-center">
-            <p class="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70">
+            <p
+              class="text-[11px] uppercase tracking-[0.32em] text-emerald-900/70"
+            >
               Unwrap luxury
             </p>
-            <h2 class="mt-2 font-display text-2xl text-emerald-950">Premium Gifts</h2>
+            <h2 class="mt-2 font-display text-2xl text-emerald-950">
+              Premium Gifts
+            </h2>
           </div>
 
           <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            <article class="flex flex-col rounded-xl border border-slate-200 bg-white p-3">
+            <article
+              class="flex flex-col rounded-xl border border-slate-200 bg-white p-3"
+            >
               <img
                 src="/images/gift-1.jpg"
                 alt="Premium gift box"
@@ -631,7 +788,9 @@
                 <h3 class="mt-1 text-sm font-semibold text-emerald-950">
                   Maharaja Collection (6 Teas)
                 </h3>
-                <p class="mt-3 text-sm font-semibold text-emerald-950">₹1,499</p>
+                <p class="mt-3 text-sm font-semibold text-emerald-950">
+                  ₹1,499
+                </p>
               </div>
               <button
                 class="mt-3 rounded-full bg-emerald-900 py-2 text-xs font-semibold text-teaGreen hover:bg-emerald-800"
@@ -640,7 +799,9 @@
               </button>
             </article>
 
-            <article class="flex flex-col rounded-xl border border-slate-200 bg-white p-3">
+            <article
+              class="flex flex-col rounded-xl border border-slate-200 bg-white p-3"
+            >
               <img
                 src="/images/gift-2.jpg"
                 alt="Assorted gift pack"
@@ -651,7 +812,9 @@
                 <h3 class="mt-1 text-sm font-semibold text-emerald-950">
                   Festive Collection (4 Flavours)
                 </h3>
-                <p class="mt-3 text-sm font-semibold text-emerald-950">₹1,199</p>
+                <p class="mt-3 text-sm font-semibold text-emerald-950">
+                  ₹1,199
+                </p>
               </div>
               <button
                 class="mt-3 rounded-full bg-emerald-900 py-2 text-xs font-semibold text-teaGreen hover:bg-emerald-800"
@@ -660,7 +823,9 @@
               </button>
             </article>
 
-            <article class="flex flex-col rounded-xl border border-slate-200 bg-white p-3">
+            <article
+              class="flex flex-col rounded-xl border border-slate-200 bg-white p-3"
+            >
               <img
                 src="/images/gift-3.jpg"
                 alt="Luxury tea box"
@@ -671,7 +836,9 @@
                 <h3 class="mt-1 text-sm font-semibold text-emerald-950">
                   Heritage Wooden Tea Chest
                 </h3>
-                <p class="mt-3 text-sm font-semibold text-emerald-950">₹1,999</p>
+                <p class="mt-3 text-sm font-semibold text-emerald-950">
+                  ₹1,999
+                </p>
               </div>
               <button
                 class="mt-3 rounded-full bg-emerald-900 py-2 text-xs font-semibold text-teaGreen hover:bg-emerald-800"
@@ -680,7 +847,9 @@
               </button>
             </article>
 
-            <article class="flex flex-col rounded-xl border border-slate-200 bg-white p-3">
+            <article
+              class="flex flex-col rounded-xl border border-slate-200 bg-white p-3"
+            >
               <img
                 src="/images/gift-4.jpg"
                 alt="Wellness set"
@@ -691,7 +860,9 @@
                 <h3 class="mt-1 text-sm font-semibold text-emerald-950">
                   Immunity &amp; Detox Gift Box
                 </h3>
-                <p class="mt-3 text-sm font-semibold text-emerald-950">₹1,299</p>
+                <p class="mt-3 text-sm font-semibold text-emerald-950">
+                  ₹1,299
+                </p>
               </div>
               <button
                 class="mt-3 rounded-full bg-emerald-900 py-2 text-xs font-semibold text-teaGreen hover:bg-emerald-800"
@@ -716,16 +887,24 @@
 
     <!-- ========== FOOTER ========== -->
     <footer class="border-t border-emerald-900/10 bg-teaDark text-teaGreen">
-      <!-- upper footer -->
-      <div class="mx-auto max-w-6xl px-4 py-10 text-xs">
+      <!-- upper footer (also reveal) -->
+      <div
+        class="section-reveal w-full px-[20%] py-10 text-sm"
+        style="
+          background-image: url('./assets/images/Footer-image.webp');
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center center;
+        "
+      >
         <div class="grid gap-8 md:grid-cols-[1.3fr,1fr,1fr,1.2fr]">
           <div>
             <h3 class="text-sm font-semibold tracking-[0.25em] text-teaGold">
               PRABHA TEA
             </h3>
-            <p class="mt-3 text-[11px] leading-relaxed text-teaGreen/90">
-              Single-origin Indian teas, sourced ethically and packed fresh at origin for a
-              truly flavourful cup.
+            <p class="mt-3 text-xs leading-relaxed text-teaGreen/90">
+              Single-origin Indian teas, sourced ethically and packed fresh at
+              origin for a truly flavourful cup.
             </p>
           </div>
 
@@ -733,7 +912,9 @@
             <h4 class="text-sm font-semibold text-white">Learn</h4>
             <ul class="mt-3 space-y-2">
               <li><a href="#story" class="hover:text-white">Our Story</a></li>
-              <li><a href="#farmers" class="hover:text-white">Our Farmers</a></li>
+              <li>
+                <a href="#farmers" class="hover:text-white">Our Farmers</a>
+              </li>
               <li><a href="#" class="hover:text-white">Brew Guide</a></li>
             </ul>
           </div>
@@ -741,16 +922,21 @@
           <div>
             <h4 class="text-sm font-semibold text-white">Shop</h4>
             <ul class="mt-3 space-y-2">
-              <li><a href="#categories" class="hover:text-white">All Teas</a></li>
-              <li><a href="#products" class="hover:text-white">Best Sellers</a></li>
+              <li>
+                <a href="#categories" class="hover:text-white">All Teas</a>
+              </li>
+              <li>
+                <a href="#products" class="hover:text-white">Best Sellers</a>
+              </li>
               <li><a href="#gifts" class="hover:text-white">Gifting</a></li>
             </ul>
           </div>
 
           <div>
             <h4 class="text-sm font-semibold text-white">Stay in Touch</h4>
-            <p class="mt-3 text-[11px] text-teaGreen/90">
-              Join our newsletter for new launches, exclusive offers and brewing tips.
+            <p class="mt-3 text-sm text-teaGreen/90">
+              Join our newsletter for new launches, exclusive offers and brewing
+              tips.
             </p>
             <form class="mt-3 flex gap-2">
               <input
@@ -769,7 +955,9 @@
         </div>
 
         <!-- cute illustrations row (placeholders) -->
-        <div class="mt-10 flex flex-wrap items-center justify-center gap-8 text-[10px]">
+        <div
+          class="mt-10 flex flex-wrap items-center justify-center gap-8 text-[10px]"
+        >
           <div class="flex flex-col items-center">
             <div class="h-16 w-16 rounded-full bg-teaGreen/20"></div>
             <span class="mt-2 text-center">Ethically Sourced</span>
@@ -787,9 +975,11 @@
 
       <!-- bottom bar -->
       <div
-        class="border-t border-emerald-900/30 bg-emerald-950/90 py-4 text-[10px] text-teaGreen/80"
+        class="border-t border-emerald-900/30 bg-emerald-950/90 py-4 text-[10px] text-white"
       >
-        <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 sm:flex-row">
+        <div
+          class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-2 px-4 sm:flex-row"
+        >
           <p>© <span id="year"></span> Prabha Tea. All rights reserved.</p>
           <div class="flex gap-4">
             <a href="#" class="hover:text-white">Privacy Policy</a>
@@ -818,6 +1008,25 @@
 
       // Set current year
       document.getElementById("year").textContent = new Date().getFullYear();
+
+      // === Scroll reveal for sections ===
+      const observer = new IntersectionObserver(
+        (entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              obs.unobserve(entry.target); // animate once
+            }
+          });
+        },
+        {
+          threshold: 0.15,
+        }
+      );
+
+      document
+        .querySelectorAll(".section-reveal")
+        .forEach((section) => observer.observe(section));
     </script>
   </body>
 </html>
